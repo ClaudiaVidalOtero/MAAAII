@@ -8,28 +8,30 @@ import os
 # ===========================================================
 # CONFIGURACIÓN
 # ===========================================================
-
 ENV_NAME = 'Pendulum-v1'
 RENDER = False
 PERTURBACIONES = False
-PERTURB_PROB = 0.05
-PERTURB_VALS = [-2.0, 2.0]
+PERTURB_PROB = 0.05 #Pedida por el enunciado
+PERTURB_VALS = [-2.0, 2.0]  #Pedidos por el enunciado
 
 N_ANGLE_BINS = 30 #
-N_VELOCITY_BINS = 30 #
-N_ACTIONS = 17
+N_VELOCITY_BINS = 15 #
+N_ACTIONS = 11
+
 
 ANGLE_MIN, ANGLE_MAX = -np.pi, np.pi
 VEL_MIN, VEL_MAX = -8.0, 8.0
 ACTION_MIN, ACTION_MAX = -2.0, 2.0
 
-NUM_EPISODES = 10000
+NUM_EPISODES = 20000
 MAX_STEPS = 200
 GAMMA = 0.95
 EPSILON_START = 1.0
-EPSILON_END = 0.05
-EPSILON_DECAY = 0.995 #
-ALPHA = 0.05 # 
+EPSILON_DECAY = 0.995
+EPSILON_END = 0.01
+ALPHA = 0.1
+
+
 
 angle_bins = np.linspace(ANGLE_MIN, ANGLE_MAX, N_ANGLE_BINS + 1)
 vel_bins = np.linspace(VEL_MIN, VEL_MAX, N_VELOCITY_BINS + 1)
@@ -169,10 +171,6 @@ plt.savefig('resultados/grafico_qlearning.png')
 plt.close()
 
 # Evaluar
-media, std = evaluar_politica(policy_det)
-print(f"\nEvaluación política final: Retorno medio = {media:.2f}, Std = {std:.2f}")
-
-# Evaluar rendimiento promedio
 media, std = evaluar_politica(policy_det)
 print(f"\nEvaluación política final: Retorno medio = {media:.2f}, Std = {std:.2f}")
 
