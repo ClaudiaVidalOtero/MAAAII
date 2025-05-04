@@ -128,7 +128,7 @@ def visualizar_politica(policy_det, n_episodios=5):
     env_vis.close()
 
 
-def evaluar_politica(policy_det, n_episodios=100):
+def evaluar_politica(policy_det, n_episodios=1000):
     env_eval = gym.make(ENV_NAME, render_mode='human' if RENDER else None)
     retornos = []
 
